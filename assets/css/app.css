@@ -1,0 +1,55 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    font-family: "Cairo", sans-serif;
+    position: relative;
+    background-color: var(--bg-body);
+    color: var(--color-txt);
+    padding-top: calc(var(--nav-height) + 30px);
+    font-size: 16px;
+}
+
+.container {
+    max-width: 1600px;
+    margin: auto;
+}
+
+.content {
+    padding: 15px;
+}
+
+/* top nav */
+.nav-wrapper {
+    background-color: var(--bg-content);
+    box-shadow: var(--shadow);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 0 30px;
+    z-index: 99;
+}
+
+.nav {
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    color: var(--color-txt);
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.logo i {
+    color: red;
+}
