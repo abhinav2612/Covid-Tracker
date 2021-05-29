@@ -338,10 +338,10 @@ body {
 }
 .container1 .card
 {
-   width: 330px;
-   height: 416px;
+   width: 400px;
+   height: 400px;
    padding: 20px 30px;
-   margin: 20px;
+   
    background: #fff;
    
 }
@@ -354,8 +354,8 @@ body {
 }
 .container1 .card .content .imgBx
 {
-   width: 200px;
-   height: 200px;
+   width: 150px;
+   height: 150px;
    border-radius: 50%;
    position: relative;
    margin-bottom: 20px;
