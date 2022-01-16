@@ -22,7 +22,7 @@
         <div class="container">
             <div class="nav">
                 <a href="" class="logo">
-                    C<i class="bx bxs-virus-block bx-tada"></i>VID TRACKER
+                    C<!--<i class="bx bxs-virus-block bx-tada"></i>---><img src="./assets/images/favicon.png" width="10%;">VID TRACKER
                 </a>
                 
             </div>
@@ -165,7 +165,7 @@
                         <div class="box-body">
                            
                            <div class="progress">
-                            <div class="progress-done" id="recover" data-done="91">
+                            <div class="progress-done" id="recover" data-done="94.5">
                                
                             </div>
                         </div>
@@ -264,34 +264,36 @@
    
     <script>
             $(document).ready(function(){
-              var url = "https://api.covid19india.org/data.json"
+              var url = "https://api.track-covid19.in/reports_v2.json"
               $.getJSON(url, function(data){
-                console.log(data)
+				console.log(data)
+                console.log(data.states.AN.confirmed)
 
-                var states = []
+                var names = []
                 var confirmed = []
                 var recovered = []
                 var deaths = []
-                $.each(data.statewise,function(id,obj){
-                    states.push(obj.state)
+                $.each(data.states,function(id,obj){
+                    names.push(obj.name)
                     confirmed.push(obj.confirmed)
                     recovered.push(obj.recovered)
-                    deaths.push(obj.deaths)
+                    deaths.push(obj.dead)
                 })
                
-                states.shift()
+                names.shift()
                 confirmed.shift()
                 recovered.shift()
                 deaths.shift()
-                states.shift()
-                console.log(states)
+                names.shift()
+                console.log(names)
+				console.log(confirmed)
 
 
                 var ctx = document.getElementById('canvas').getContext('2d');
    var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: states,
+        labels: names,
         datasets: [
           {
             label: 'Confirmed Cases',
@@ -328,14 +330,12 @@
 
                 var state,total_active, total_recovered, total_deaths, total_confirmed, confirmed_total, recovered_total, death_total 
                 var value;
-
-                confirmed_total=data.statewise[0].confirmed
-                recovered_total=data.statewise[0].recovered
-                death_total=data.statewise[0].deaths
+                confirmed_total=data.confirmed
+                recovered_total=data.recovered
+                death_total=data.dead
                 
                 value=(recovered_total/confirmed_total)*100;
                 console.log(value);
-
 
                 var x = parseFloat(value).toFixed( 2 );
                 const progress = document.querySelector('.progress-done');
@@ -349,13 +349,18 @@
                 $("#confirmed-total").append(confirmed_total)
                 $("#recovered-total").append(recovered_total)
                 $("#death-total").append(death_total)
+console.log(names[6])
+console.log(confirmed[7])
+console.log(recovered[7])
+console.log(deaths[7])
 
-                for(var i=1;i<data['statewise'].length;i++){
+                for(var i=1;i<35;i++){
 
-                state=data.statewise[i].state;
-                total_recovered=data.statewise[i].recovered;
-                total_deaths=data.statewise[i].deaths;
-                total_confirmed=data.statewise[i].confirmed;
+                state=names[i];
+                total_recovered=recovered[i+1];
+                total_deaths=deaths[i+1];
+                total_confirmed=confirmed[i+1];
+				console.log(state + " " + total_confirmed)
 
                 // $("#state").append(state)
                 // $("#active").append(total_active)
